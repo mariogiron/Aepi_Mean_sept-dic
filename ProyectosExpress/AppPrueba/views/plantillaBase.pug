@@ -1,0 +1,17 @@
+mixin listado(arr)
+    ul
+        each item in arr
+            li= item
+
+doctype html
+html
+  head
+    title= title
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    include includes/cabecera
+    div
+      block contenido
+    footer
+      block piePagina
+        p Pie de Página

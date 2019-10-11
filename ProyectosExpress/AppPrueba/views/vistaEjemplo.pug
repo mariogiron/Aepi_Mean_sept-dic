@@ -1,0 +1,43 @@
+extends plantillaBase.pug
+
+block contenido
+    h2 Cabecera de ejemplo
+    div#principal.rojo.negrita
+        p Párrafo 1
+        p Párrafo 2
+        p Párrafo 3
+    a(href='http://www.google.com', title='Google', id='enlaceGoogle') Google.com
+    .segundo
+        p Párrafo
+    .tercero
+        p= nombre
+        p Mi nombre es #{nombre}
+    .cuarto 
+        case numProductos
+            when 0
+                p No tienes productos
+            when 1
+                p Tienes un único producto
+            default
+                p Tienes #{numProductos} productos
+    .quinto
+        // Comentarios HTML
+        //- Comentarios Ocultos
+        ul
+            - for(var i = 0; i<animales.length; i++)
+                li= animales[i]
+    .sexto
+        ul
+            each anim in animales
+                li= anim
+            else
+                li No hay animales
+    .septimo
+        ul
+            each estu, index in estudiantes
+                li #{index+1} #{estu.nombre} #{estu.apellidos}
+    .octavo
+        +listado(['uno', 'dos'])
+        +listado(animales)
+        +listado([1,2,3,4,5,6])
+    | Hola Mundo
