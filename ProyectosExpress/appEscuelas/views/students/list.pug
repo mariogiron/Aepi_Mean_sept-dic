@@ -1,0 +1,29 @@
+extends ../layout
+
+block content
+    h2 Lista de Estudiantes
+    table.table
+        thead
+            tr
+                th Nombre
+                th Apellidos
+                th Nombre Completo
+                th Edad 
+                th Dni
+                th Mail
+                th Activo
+                th Acciones
+        tbody
+            each estu in arrEstudiantes
+                tr
+                    td= estu.nombre
+                    td= estu.apellidos
+                    td= estu.nombre_completo
+                    td= estu.edad
+                    td= estu.dni
+                    td= estu.mail
+                    td= estu.activo
+                    td
+                        a.btn.btn-primary(href="/students/"+estu.id) Ver
+                        a.btn.btn-success(href="/students/edit/"+estu.id) Edit
+                        a.btn.btn-danger(href="/students/delete/"+estu.id) Borrar
