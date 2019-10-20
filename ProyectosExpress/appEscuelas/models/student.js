@@ -7,7 +7,8 @@ let studentSchema = new Schema({
     edad: Number,
     dni: String,
     mail: String,
-    activo: Boolean
+    activo: Boolean,
+    productos: [{ type: Schema.Types.ObjectId, ref: 'Product' }]
 });
 
 studentSchema.virtual('nombre_completo').get(function () {
