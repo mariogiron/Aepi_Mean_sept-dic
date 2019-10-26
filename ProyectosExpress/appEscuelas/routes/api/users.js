@@ -3,6 +3,9 @@ const router = express.Router();
 const bcrypt = require('bcrypt');
 const User = require('../../models/user');
 
+const moment = require('moment');
+const jwt = require('jwt-simple');
+
 router.post('/register', (req, res) => {
     req.body.password = bcrypt.hashSync(req.body.password, 10);
     User.create(req.body).then(user => {
@@ -10,19 +13,38 @@ router.post('/register', (req, res) => {
     });
 });
 
+// Recibe el mail y el password
 router.post('/login', (req, res) => {
     // Recupero todos los usuarios con el mail que viene dentro del body
     User.find({
         mail: req.body.mail
     }, (err, users) => {
-        console.log(req.body.password);
-        console.log(users[0].password);
+        // Si recogemos un único usuario
         if (users.length == 1) {
-
+            // Comparamos las password
+            bcrypt.compare(req.body.password, users[0].password, (err, same) => {
+                if (same) {
+                    let token = createToken(users[0]);
+                    res.json({ success: token });
+                } else {
+                    res.json({ error: 'Usuario y/o password incorrecta' });
+                }
+            });
         } else {
+            // Si no, devolvemos error. Sólo puede existir un usuario por mail
             res.json({ error: 'Usuario y/o password incorrecta' });
         }
     });
-})
+});
+
+let createToken = (user) => {
+    let obj = {
+        user_id: user.id,
+        expires_date: moment().add(5, 'minutes').unix(),
+        create_date: moment().unix()
+    }
+    let token = jwt.encode(obj, process.env.TOKEN_KEY);
+    return token;
+}
 
 module.exports = router;
