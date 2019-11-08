@@ -1,0 +1,11 @@
+<div>
+  <input type="text" [(ngModel)]="campoTexto">
+  <p>{{ campoTexto }}</p>
+</div>
+
+<h2>Hola Mundo!!</h2>
+<app-saludo></app-saludo>
+<app-contador [numero]="arrNums[0]" (cuentaTerminada)="termina($event)"></app-contador>
+<app-contador [numero]="arrNums[1]"></app-contador>
+<app-contador [numero]="arrNums[2]"></app-contador>
+<app-suma num1="7" num2="8" (sumaTerminada)="finSuma($event)"></app-suma>

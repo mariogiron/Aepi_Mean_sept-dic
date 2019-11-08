@@ -1,0 +1,14 @@
+.wrapper {
+    border: 1px solid black;
+    padding: 20px;
+    border-radius: 15px;
+    margin-bottom: 10px;
+}
+
+.completa {
+    background-color: lightgreen;
+}
+
+.incompleta {
+    background-color: lightcoral;
+}

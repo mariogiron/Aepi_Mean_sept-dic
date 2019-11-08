@@ -1,0 +1,6 @@
+<div *ngFor="let tarea of tareas; let i = index;" class="wrapper" [ngClass]="{ completa: tarea.completa, incompleta: !tarea.completa }"
+    (click)="marcarCompleta(tarea)">
+    <h4>{{ tarea.titulo }}</h4>
+    <p>{{ tarea.descripcion }}</p>
+    <p>{{ tarea.prioridad }}</p>
+</div>
