@@ -1,19 +1,18 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-import { FormsModule } from '@angular/forms';
 
+import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
-import { BucleComponent } from './bucle/bucle.component';
-import { SubrayadoDirective } from './subrayado.directive';
+import { ListaComponent } from './lista/lista.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    BucleComponent,
-    SubrayadoDirective
+    ListaComponent
   ],
   imports: [
-    BrowserModule, FormsModule
+    BrowserModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]

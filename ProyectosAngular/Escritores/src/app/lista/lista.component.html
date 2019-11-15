@@ -1,0 +1,6 @@
+<p *ngIf="loading">Cargando la lista de escritores...</p>
+<ul>
+    <li *ngFor="let escritor of escritores">
+        {{ escritor.nombre }}
+    </li>
+</ul>

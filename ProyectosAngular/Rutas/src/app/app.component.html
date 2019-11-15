@@ -1,0 +1,18 @@
+<ul>
+  <li>
+    <a [routerLink]="['info']" [routerLinkActive]="'activa'">Info</a>
+  </li>
+  <li>
+    <a [routerLink]="['contacto']" [routerLinkActive]="'activa'">Contacto</a>
+  </li>
+  <li>
+    <a [routerLink]="['saludo']" [routerLinkActive]="'activa'">Saludo</a>
+  </li>
+</ul>
+<router-outlet></router-outlet>
+
+<div>
+  <button (click)="manejarClick('info')">Info</button>
+  <button (click)="manejarClick('contacto')">Contacto</button>
+  <button (click)="manejarClick('saludo')">Saludo</button>
+</div>
