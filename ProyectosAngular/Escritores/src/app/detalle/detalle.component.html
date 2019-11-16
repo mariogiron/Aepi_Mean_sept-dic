@@ -1,0 +1,13 @@
+<!-- <div *ngIf="escritor">
+    <p>Nombre: {{ escritor.nombre }} {{escritor.apellidos}}</p>
+    <p>País: {{ escritor.pais }}</p>
+    <p>Id: {{ escritor.id }}</p>
+    <img [src]="escritor.imagen" width="300">
+</div> -->
+
+<p>Nombre: {{ escritor?.nombre }} {{escritor?.apellidos}}</p>
+<p>País: {{ escritor?.pais }}</p>
+<p>Id: {{ escritor?.id }}</p>
+<img [src]="escritor?.imagen" width="100">
+
+<router-outlet></router-outlet>
