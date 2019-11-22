@@ -40,7 +40,7 @@ router.post('/login', (req, res) => {
 let createToken = (user) => {
     let obj = {
         user_id: user.id,
-        expires_date: moment().add(5, 'minutes').unix(),
+        expires_date: moment().add(45, 'minutes').unix(),
         create_date: moment().unix()
     }
     let token = jwt.encode(obj, process.env.TOKEN_KEY);

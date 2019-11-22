@@ -1,0 +1,15 @@
+<!--<h4>{{ arrPlanetas ? arrPlanetas[0].name : "" }}</h4>
+<ul>
+  <li *ngFor="let planeta of arrPlanetas">
+    {{ planeta.name }}
+  </li>
+</ul>
+
+<div>
+  <button (click)="cambioPagina(false)" [disabled]="numPage === 1">Anterior</button>
+  <button (click)="cambioPagina(true)" [disabled]="numPage === pageCount">Siguiente</button>
+</div>-->
+
+<div class="container">
+  <router-outlet></router-outlet>
+</div>
