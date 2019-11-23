@@ -18,8 +18,13 @@ export class ListaComponent implements OnInit {
   ) { }
 
   ngOnInit() {
+    this.cargarAlumnos();
+  }
+
+  cargarAlumnos() {
     this.alumnosService.getAll()
       .then(response => {
+        console.log(response);
         this.arrAlumnos = response;
       }).catch(err => {
         console.log(err);
@@ -28,6 +33,16 @@ export class ListaComponent implements OnInit {
 
   manejarClickVer(alumno) {
     this.router.navigate(['/alumnos', alumno._id]);
+  }
+
+  manejarClickBorrar(alumno) {
+    this.alumnosService.delete(alumno._id)
+      .then(response => {
+        if (response['success']) {
+          alert('Alumno borrado');
+          this.cargarAlumnos();
+        }
+      }).catch(err => console.log(err));
   }
 
 }

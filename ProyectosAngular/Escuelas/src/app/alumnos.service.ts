@@ -14,11 +14,26 @@ export class AlumnosService {
   }
 
   getAll(): Promise<Alumno[]> {
-    const httpOptions = {
+    return this.http.get<Alumno[]>(this.baseUrl, this.createHttpOptions()).toPromise();
+  }
+
+  getById(pAlumnoId): Promise<Alumno> {
+    return this.http.get<Alumno>(`${this.baseUrl}/${pAlumnoId}`, this.createHttpOptions()).toPromise();
+  }
+
+  create(values): Promise<Alumno> {
+    return this.http.post<Alumno>(this.baseUrl, values, this.createHttpOptions()).toPromise();
+  }
+
+  delete(pAlumnoId) {
+    return this.http.delete(`${this.baseUrl}/${pAlumnoId}`, this.createHttpOptions()).toPromise();
+  }
+
+  createHttpOptions() {
+    return {
       headers: new HttpHeaders({
         'aepi-token': localStorage.getItem('tokenEscuelas')
       })
     };
-    return this.http.get<Alumno[]>(this.baseUrl, httpOptions).toPromise();
   }
 }

@@ -15,6 +15,8 @@
         <td>{{ alumno.activo }}</td>
         <td>
             <button class="btn btn-info" (click)="manejarClickVer(alumno)">Ver</button>
+            <button class="btn btn-success" [routerLink]="['/alumnos', 'edit', alumno._id]">Editar</button>
+            <button class="btn btn-danger" (click)="manejarClickBorrar(alumno)">Borrar</button>
         </td>
     </tr>
 </table>

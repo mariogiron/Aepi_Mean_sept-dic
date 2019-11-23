@@ -21,6 +21,8 @@ router.get('/:idEstudiante', (req, res) => {
 
 // POST http://localhost:3000/api/students
 router.post('/', (req, res) => {
+    // Compruebo si el valor de activo existe antes de insertar
+    req.body.activo = req.body.activo ? req.body.activo : false;
     Student.create(req.body).then(estudiante => {
         res.json(estudiante);
     })
@@ -35,6 +37,13 @@ router.put('/', (req, res) => {
 
 router.delete('/', (req, res) => {
     Student.findByIdAndDelete(req.body.idEstudiante, (err, estudiante) => {
+        // res.json(estudiante);
+        res.json({ success: 'Se ha borrado correctamente' });
+    });
+});
+
+router.delete('/:idEstudiante', (req, res) => {
+    Student.findByIdAndDelete(req.params.idEstudiante, (err, estudiante) => {
         // res.json(estudiante);
         res.json({ success: 'Se ha borrado correctamente' });
     });

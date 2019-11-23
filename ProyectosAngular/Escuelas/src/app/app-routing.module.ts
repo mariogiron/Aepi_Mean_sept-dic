@@ -1,3 +1,4 @@
+import { PipesComponent } from './pipes/pipes.component';
 import { LoginGuard } from './login.guard';
 import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
@@ -11,10 +12,11 @@ import { Routes, RouterModule } from '@angular/router';
 const routes: Routes = [
   { path: 'alumnos', component: ListaComponent, canActivate: [LoginGuard] },
   { path: 'alumnos/new', component: FormComponent },
-  { path: 'alumnos/edit', component: EditComponent },
+  { path: 'alumnos/edit/:alumnoId', component: EditComponent },
   { path: 'alumnos/:alumnoId', component: DetailComponent },
   { path: 'registro', component: RegistroComponent },
-  { path: 'login', component: LoginComponent }
+  { path: 'login', component: LoginComponent },
+  { path: 'pipes', component: PipesComponent }
 ];
 
 @NgModule({
